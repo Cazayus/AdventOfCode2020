@@ -1,5 +1,3 @@
-import java.util.*
-
 fun main() {
     partOne()
     partTwo()
@@ -7,7 +5,7 @@ fun main() {
 
 private fun partOne() {
     val input = Utils.getInput("DayOne")
-    val sortedInput = TreeSet(input.map { it.toInt() })
+    val sortedInput = input.map { it.toInt() }.sorted()
     for (value in sortedInput) {
         val secondValueNeeded = 2020 - value
         if (sortedInput.contains(secondValueNeeded)) {
@@ -19,7 +17,7 @@ private fun partOne() {
 
 private fun partTwo() {
     val input = Utils.getInput("DayOne")
-    val sortedInput = TreeSet(input.map { it.toInt() })
+    val sortedInput = input.map { it.toInt() }.sorted()
     val reversedInput = sortedInput.reversed()
     for (descendingValue in reversedInput) {
         for (ascendingValue in sortedInput) {
