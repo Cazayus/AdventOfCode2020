@@ -1,23 +1,35 @@
+import java.util.*
+
 fun main() {
     partOne()
+    partTwo()
 }
 
 private fun partOne() {
     val input = Utils.getInput("DayOne")
-    val sortedInput = input.map { it.toInt() }.sorted()
+    val sortedInput = TreeSet(input.map { it.toInt() })
+    for (value in sortedInput) {
+        val secondValueNeeded = 2020 - value
+        if (sortedInput.contains(secondValueNeeded)) {
+            println(value * secondValueNeeded)
+            return
+        }
+    }
+}
+
+private fun partTwo() {
+    val input = Utils.getInput("DayOne")
+    val sortedInput = TreeSet(input.map { it.toInt() })
     val reversedInput = sortedInput.reversed()
-    val value1: Int
-    val value2: Int
     for (descendingValue in reversedInput) {
-        val valueNeeded = 2020 - descendingValue
         for (ascendingValue in sortedInput) {
-            if (ascendingValue == valueNeeded) {
-                value1 = descendingValue
-                value2 = ascendingValue
-                println(value1 * value2)
-                throw UnsupportedOperationException()
-            } else if (ascendingValue > valueNeeded) {
+            if (descendingValue + ascendingValue > 2020) {
                 break
+            }
+            val thirdValueNeeded = 2020 - descendingValue - ascendingValue
+            if (sortedInput.contains(thirdValueNeeded)) {
+                println(descendingValue * ascendingValue * thirdValueNeeded)
+                return
             }
         }
     }
