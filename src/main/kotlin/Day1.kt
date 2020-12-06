@@ -4,7 +4,7 @@ fun main() {
 }
 
 private fun partOne() {
-    val input = Utils.getInput("DayOne")
+    val input = Utils.getInput("Day1")
     val sortedInput = input.map { it.toInt() }.sorted()
     for (value in sortedInput) {
         val secondValueNeeded = 2020 - value
@@ -16,7 +16,7 @@ private fun partOne() {
 }
 
 private fun partTwo() {
-    val input = Utils.getInput("DayOne")
+    val input = Utils.getInput("Day1")
     val sortedInput = input.map { it.toInt() }.sorted()
     val reversedInput = sortedInput.reversed()
     for (descendingValue in reversedInput) {

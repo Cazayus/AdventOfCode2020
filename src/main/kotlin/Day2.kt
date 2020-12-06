@@ -4,7 +4,7 @@ fun main() {
 }
 
 private fun partOne() {
-    val input = Utils.getInput("DayTwo")
+    val input = Utils.getInput("Day2")
     val validPassword = input.map {
         val minOccurence = it.takeWhile { char -> char != '-' }.toInt()
         val maxOccurence = it.dropWhile { char -> char != '-' }.takeWhile { char -> char != ' ' }.drop(1).toInt()
@@ -17,7 +17,7 @@ private fun partOne() {
 }
 
 private fun partTwo() {
-    val input = Utils.getInput("DayTwo")
+    val input = Utils.getInput("Day2")
     val validPassword = input.map {
         val indexOne = it.takeWhile { char -> char != '-' }.toInt()
         val indexTwo = it.dropWhile { char -> char != '-' }.takeWhile { char -> char != ' ' }.drop(1).toInt()
