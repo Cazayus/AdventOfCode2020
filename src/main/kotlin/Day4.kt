@@ -7,7 +7,7 @@ private val eyeColor = listOf("amb", "blu", "brn", "gry", "grn", "hzl", "oth")
 private val keyList = listOf("byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid")
 
 private fun partOne() {
-    val input = Utils.getInputInOneLine("Day4")
+    val input = Utils.getInputAsText("Day4")
     val potentialPassportListAsString = input.split("${System.lineSeparator()}${System.lineSeparator()}")
     val potentialPassportListAsMap = potentialPassportListAsString.map { potentialPassport ->
         potentialPassport.split(System.lineSeparator()).flatMap { it.split(' ') }.associate { pairString ->
@@ -22,7 +22,7 @@ private fun partOne() {
 }
 
 private fun partTwo() {
-    val input = Utils.getInputInOneLine("Day4")
+    val input = Utils.getInputAsText("Day4")
     val potentialPassportListAsString = input.split("${System.lineSeparator()}${System.lineSeparator()}")
     val potentialPassportListAsMap = potentialPassportListAsString.map { potentialPassport ->
         potentialPassport.split(System.lineSeparator()).flatMap { it.split(' ') }.associate { pairString ->

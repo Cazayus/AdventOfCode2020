@@ -4,7 +4,7 @@ fun main() {
 }
 
 private fun partOne() {
-    val input = Utils.getInput("Day3")
+    val input = Utils.getInputAsList("Day3")
     val lineLength = input[0].length
     val nbTreeEncountered = input.foldIndexed(0) { index, accumulator, line ->
         if (line[(index * 3) % lineLength] == '#') accumulator + 1
@@ -14,7 +14,7 @@ private fun partOne() {
 }
 
 private fun partTwo() {
-    val input = Utils.getInput("Day3")
+    val input = Utils.getInputAsList("Day3")
     val lineLength = input[0].length
     val slope1 = input.foldIndexed(0) { index, accumulator, line ->
         if (line[index % lineLength] == '#') accumulator + 1

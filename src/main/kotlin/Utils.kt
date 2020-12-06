@@ -1,12 +1,9 @@
-class Utils {
-    companion object {
-        fun getInput(fileName: String): List<String> {
-            val input = {}::class.java.getResource("$fileName.txt").readText()
-            return input.lines()
-        }
+internal object Utils {
+    fun getInputAsList(fileName: String): List<String> {
+        return Utils.javaClass.getResource("$fileName.txt").readText().lines()
+    }
 
-        fun getInputInOneLine(fileName: String): String {
-            return {}::class.java.getResource("$fileName.txt").readText()
-        }
+    fun getInputAsText(fileName: String): String {
+        return Utils.javaClass.getResource("$fileName.txt").readText()
     }
 }
