@@ -1,7 +1,7 @@
 fun main() {
     val input = Utils.getInputAsText("Day8")
     val regex = """(acc|jmp|nop) (.\d+)""".toRegex(RegexOption.MULTILINE)
-    val parsedInput: List<Pair<String, Int>> = regex.findAll(input).mapIndexed { index, matchResult ->
+    val parsedInput: List<Pair<String, Int>> = regex.findAll(input).mapIndexed { _, matchResult ->
         val (operation, value) = matchResult.destructured
         (operation to value.toInt())
     }.toList()
