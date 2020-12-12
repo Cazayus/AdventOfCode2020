@@ -8,8 +8,8 @@ private val input = Utils.getInputAsList("Day11").mapIndexed { yIndex, string ->
 private val width = input.maxOfOrNull { (key, _) -> key.first }!!
 private val height = input.maxOfOrNull { (key, _) -> key.second }!!
 
-typealias Seat = Pair<Int, Int>
-typealias Seats = Map<Seat, Char>
+private typealias Seat = Pair<Int, Int>
+private typealias Seats = Map<Seat, Char>
 
 fun main() {
     val current = mutableMapOf<Seat, Char>()
