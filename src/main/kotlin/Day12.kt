@@ -1,11 +1,11 @@
 import kotlin.math.absoluteValue
 
-enum class Direction { N, S, E, W }
-enum class InstructionPart { N, S, E, W, F, L, R }
-typealias Instruction = Pair<InstructionPart, Int>
-typealias Position = Pair<Int, Int>
+private enum class Direction { N, S, E, W }
+private enum class InstructionPart { N, S, E, W, F, L, R }
+private typealias Instruction = Pair<InstructionPart, Int>
+private typealias Position = Pair<Int, Int>
 
-class Ship(var position: Position = Position(0, 0), var direction: Direction = Direction.E, var wayPoint: Position = Position(10, 1)) {
+private class Ship(var position: Position = Position(0, 0), var direction: Direction = Direction.E, var wayPoint: Position = Position(10, 1)) {
     fun moveToWaypoint(instruction: Instruction) {
         if (instruction.first == InstructionPart.F) {
             this.position = this.position.first + instruction.second * this.wayPoint.first to this.position.second + instruction.second * this.wayPoint.second
