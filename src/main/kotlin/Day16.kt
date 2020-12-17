@@ -16,12 +16,10 @@ fun main() {
         line.split(",").map { it.toInt() }
     }.toList()
     println("Puzzle 1 : " + nearbyTickets.flatMap { rules.getValuesNotMatchingAnyRules(it) }.sum())
-    val validNearbyTickets = nearbyTickets.filter { nearbyTicket -> rules.matchesAnyRules(nearbyTicket) }
+    val validNearbyTickets = nearbyTickets.filter { nearbyTicket -> rules.getValuesNotMatchingAnyRules(nearbyTicket).isEmpty() }
     val indexToValidRules = mutableMapOf<Int, List<Rule>>()
     (0..19).forEach { index ->
-        val validRulesForThisIndex = rules.filter { rule ->
-            validNearbyTickets.map { it[index] }.all { rule.isValueInRange(it) }
-        }
+        val validRulesForThisIndex = rules.filter { rule -> validNearbyTickets.map { it[index] }.all { rule.isValueInRange(it) } }
         indexToValidRules[index] = validRulesForThisIndex
     }
     while (indexToValidRules.any { it.value.size > 1 }) {
@@ -42,8 +40,4 @@ fun List<Rule>.matchesAnyRules(value: Int): Boolean {
 
 fun List<Rule>.getValuesNotMatchingAnyRules(values: List<Int>): List<Int> {
     return values.filter { value -> !matchesAnyRules(value) }
-}
-
-fun List<Rule>.matchesAnyRules(values: List<Int>): Boolean {
-    return values.all { value -> matchesAnyRules(value) }
 }
