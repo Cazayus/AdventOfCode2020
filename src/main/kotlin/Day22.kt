@@ -1,3 +1,6 @@
+import java.util.*
+import kotlin.collections.ArrayDeque
+
 private enum class WINNER { PLAYER1, PLAYER2 }
 
 fun main() {
@@ -24,14 +27,13 @@ private fun runGameOne(player1Deck: ArrayDeque<Int>, player2Deck: ArrayDeque<Int
 }
 
 private fun runGameTwo(player1Deck: ArrayDeque<Int>, player2Deck: ArrayDeque<Int>): WINNER {
-    val deck1Seen = mutableListOf<String>()
-    val deck2Seen = mutableListOf<String>()
+    val stateAlreadySeen = mutableSetOf<Int>()
     while (player1Deck.isNotEmpty() && player2Deck.isNotEmpty()) {
-        if (deck1Seen.contains(player1Deck.toString()) && deck2Seen.contains(player2Deck.toString())) {
+        val hash = Objects.hash(player1Deck, player2Deck)
+        if (hash in stateAlreadySeen) {
             return WINNER.PLAYER1
         } else {
-            deck1Seen.add(player1Deck.toString())
-            deck2Seen.add(player2Deck.toString())
+            stateAlreadySeen.add(hash)
         }
         val player1Card = player1Deck.removeFirst()
         val player2Card = player2Deck.removeFirst()
